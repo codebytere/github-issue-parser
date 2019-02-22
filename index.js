@@ -27,7 +27,19 @@ function githubIssueParser (txt) {
       listKeys.forEach(listItem => {
         key = listItem.children[0].children[0].children[0].value
         result[key] = []
-        result[key].push(listItem.children[0].children[1])
+        if (listItem.children[0].hasOwnProperty('children')) {
+          console.log(listItem.children[0].children)
+          if (listItem.children[0].children.length > 1) {
+            result[key].push(listItem.children[0].children[1])
+          } else {
+            // push an empty filler node if no data provided
+            result[key].push({
+              type: 'text',
+              value: '',
+              position: {}
+            })
+          }
+        }
       })
       return
     }
