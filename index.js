@@ -28,7 +28,6 @@ function githubIssueParser (txt) {
         key = listItem.children[0].children[0].children[0].value
         result[key] = []
         if (listItem.children[0].hasOwnProperty('children')) {
-          console.log(listItem.children[0].children)
           if (listItem.children[0].children.length > 1) {
             result[key].push(listItem.children[0].children[1])
           } else {
